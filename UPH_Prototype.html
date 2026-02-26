@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universitas Pelita Harapan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000;
+            padding: 15px 40px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            color: #fff;
+            font-weight: bold;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffc107;
+        }
+
+        .lang-selector {
+            color: #fff;
+            font-size: 14px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-selector a {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .lang-selector a.active {
+            font-weight: bold;
+        }
+
+        .daftar-btn {
+            background-color: #fff;
+            color: #000;
+            padding: 10px 25px;
+            border-radius: 5px;
+            border: 2px solid #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .daftar-btn:hover {
+            background-color: #000;
+            color: #fff;
+            border-color: #fff;
+        }
+
+        .menu-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .menu-icon:hover span {
+            background-color: #ffc107;
+        }
+
+        /* Banner Styles */
+        .banner {
+            margin-top: 70px;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://www.uph.edu/wp-content/uploads/2025/01/banner-scaled-min.jpg?x52864') center/cover;
+            min-height: 500px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding: 60px;
+            color: #fff;
+        }
+
+        .banner-content {
+            max-width: 600px;
+        }
+
+        .banner h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .banner p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        /* Hero Section*/
+        .hero-section {
+            background-color: #000;
+            display: flex;
+            align-items: flex-start;
+            min-height: 600px;
+            padding: 80px 60px;
+            gap: 80px;
+            position: relative;
+        }
+
+        .hero-section-image {
+            flex: 0 0 55%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-section-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .hero-section-content {
+            flex: 0 0 35%;
+            color: #fff;
+            padding-top: 100px;
+        }
+
+        .hero-section-content h2 {
+            font-size: 36px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        .hero-section-content p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .btn-more {
+            display: inline-block;
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn-more:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Programs Section */
+        .programs {
+            padding: 60px 40px;
+            background-color: #fff;
+        }
+
+        .programs-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .programs-header-content h2 {
+            font-size: 40px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .programs-header-content p {
+            font-size: 16px;
+            color: #666;
+            max-width: 400px;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .nav-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border: 2px solid #000;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: #000;
+            font-size: 32px;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        .nav-arrow:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .programs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .program-card {
+            position: relative;
+            height: 350px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .program-card-image {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .program-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 30px 20px 20px;
+            color: #fff;
+        }
+
+        .program-card-overlay h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* Explore Section */
+        .explore {
+            background-color: #4a4a4a;
+            padding: 60px 40px;
+            color: #fff;
+        }
+
+        .explore h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .explore-subtitle {
+            font-size: 16px;
+            color: #ccc;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .explore-filters {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .search-wrapper {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            font-size: 20px;
+            color: #fff;
+            pointer-events: none;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 15px 20px 15px 50px;
+            background-color: transparent;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .search-box::placeholder {
+            color: #999;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #ffc107;
+        }
+
+        .filter-dropdown {
+            padding: 15px 20px;
+            background-color: transparent;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-dropdown:hover {
+            border-color: #ffc107;
+        }
+
+        .filter-dropdown:focus {
+            outline: none;
+            border-color: #ffc107;
+        }
+
+        .filter-dropdown option {
+            background-color: #4a4a4a;
+            color: #fff;
+        }
+
+        .explore-btn {
+            padding: 15px 40px;
+            background-color: #fff;
+            color: #4a4a4a;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .explore-btn:hover {
+            background-color: #ffc107;
+        }
+
+        /* News Section */
+        .news {
+            padding: 60px 40px;
+            background-color: #fff;
+        }
+
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 50px;
+        }
+
+        .news-header-content h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .news-header-content p {
+            font-size: 16px;
+            color: #666;
+            max-width: 400px;
+            line-height: 1.6;
+        }
+
+        .news-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .featured-news {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .featured-news-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .featured-news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-news-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .featured-news-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .featured-news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .news-item {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-item-image {
+            flex-shrink: 0;
+            width: 140px;
+            height: 100px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .news-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-item-content {
+            flex: 1;
+        }
+
+        .news-item-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .news-item-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #000;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        article {
+            background: transparent;
+            padding: 0;
+        }
+
+        article h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        article p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1024px) {
+            .news-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Alumni Section */
+        .alumni {
+            padding: 60px 40px;
+            background-color: #000;
+            display: flex;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .alumni-left {
+            flex: 0 0 40%;
+            color: #fff;
+        }
+
+        .alumni-left h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .alumni-left p {
+            font-size: 16px;
+            color: #ccc;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .alumni-btn {
+            display: inline-block;
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .alumni-btn:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .alumni-right {
+            flex: 0 0 60%;
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 40px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .alumni-quote {
+            font-size: 18px;
+            color: #000;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .alumni-image {
+            flex-shrink: 0;
+        }
+
+        .alumni-image img {
+            width: 200px;
+            height: 250px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .alumni-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 20px;
+        }
+
+        .alumni-info-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        .alumni-info-details {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .alumni-slider-dots {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .alumni-dot {
+            width: 12px;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .alumni-dot.active {
+            background-color: #fff;
+            width: 30px;
+        }
+
+        @media (max-width: 1024px) {
+            .alumni {
+                flex-direction: column;
+            }
+
+            .alumni-left,
+            .alumni-right {
+                flex: 1;
+                width: 100%;
+            }
+        }
+
+        /* Instagram Section */
+        .instagram {
+            padding: 60px 40px;
+            background-color: #fff;
+            display: flex;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .instagram-left {
+            flex: 0 0 35%;
+        }
+
+        .instagram-left h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .instagram-link {
+            display: inline-block;
+            font-size: 16px;
+            color: #000;
+            text-decoration: none;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #000;
+            transition: all 0.3s;
+        }
+
+        .instagram-link:hover {
+            color: #ffc107;
+            border-bottom-color: #ffc107;
+        }
+
+        .instagram-right {
+            flex: 0 0 65%;
+        }
+
+        .instagram-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .instagram-post {
+            min-width: 200px;
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .instagram-post:hover {
+            transform: scale(1.05);
+        }
+
+        .instagram-post img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .instagram-carousel-dots {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .instagram-carousel-dot {
+            width: 12px;
+            height: 4px;
+            background-color: #e0e0e0;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .instagram-carousel-dot.active {
+            background-color: #000;
+            width: 30px;
+        }
+
+        @media (max-width: 1024px) {
+            .instagram {
+                flex-direction: column;
+            }
+
+            .instagram-left,
+            .instagram-right {
+                flex: 1;
+                width: 100%;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 60px 40px 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-section-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            font-size: 14px;
+        }
+
+        .footer-section-contact a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section-contact a:hover {
+            color: #ffc107;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-section ul li {
+            font-size: 14px;
+        }
+
+        .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ffc107;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-copyright {
+            font-size: 13px;
+            color: #999;
+            flex: 1;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            font-size: 13px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ffc107;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-socials a {
+            color: #fff;
+            font-size: 20px;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+
+        .footer-socials a:hover {
+            color: #ffc107;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-socials {
+                justify-content: flex-start;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .hero {
+                padding: 0 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="https://www.uph.edu/wp-content/uploads/2025/10/UPH-Web-Logo-White-2025.png?x52864" alt="UPH Logo">
+    </div>
+
+    <div class="nav-container">
+        <div class="lang-selector">
+            <a href="#">EN</a>
+            <span>|</span>
+            <a href="#" class="active">ID</a>
+        </div>
+        
+        <a href="#daftar" class="daftar-btn">DAFTAR SEKARANG</a>
+        
+        <div class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</header>
+
+<section class="banner">
+    <div class="banner-content">
+        <h1>Membangun generasi berilmu dan visioner untuk mewujudkan masa depan penuh harapan</h1>
+    </div>
+</section>
+<section class="hero-section">
+    <div class="hero-section-image">
+        <img src="https://www.uph.edu/wp-content/uploads/2025/02/Highlight-UPH-3-e1750231113335.jpg?x52864" alt="Program Anestesiologi">
+    </div>
+    <div class="hero-section-content">
+        <h2>Memelopori Program Anestesiologi & Terapi Intensif di Indonesia</h2>
+        <a href="#" class="btn-more">Baca Selengkapnya</a>
+    </div>
+</section>
+<section class="programs">
+    <div class="programs-header">
+        <div class="programs-header-content">
+            <h2>Program Unggulan</h2>
+            <p>Jelajahi program unggulan kami, dirancang dengan kurikulum komprehensif.</p>
+        </div>
+        <a href="#" class="nav-arrow">→</a>
+    </div>
+
+    <div class="programs-container">
+        <div class="program-card">
+            <div class="program-card-image" style="background-image: url('https://www.uph.edu/wp-content/uploads/2024/08/Visual-Communication-Design-featured.jpg?x52864')">
+                <div class="program-card-overlay">
+                    <h3>Desain Komunikasi Visual: Desain Grafis</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="program-card">
+            <div class="program-card-image" style="background-image: url('https://www.uph.edu/wp-content/uploads/2024/08/Medicine-1-e1750234725840.jpg?x52864')">
+                <div class="program-card-overlay">
+                    <h3>Kedokteran</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="program-card">
+            <div class="program-card-image" style="background-image: url('https://www.uph.edu/wp-content/uploads/2024/08/Food-Business-Entrepreneurship-e1750145043477.jpg?x52864')">
+                <div class="program-card-overlay">
+                    <h3>Bisnis dan Kewirausahaan Pangan</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="program-card">
+            <div class="program-card-image" style="background-image: url('https://www.uph.edu/wp-content/uploads/2024/08/Supply-Chain-Management-Analytics-e1750145343778.jpg?x52864')">
+                <div class="program-card-overlay">
+                    <h3>Manajemen dan Analitika Rantai Pasok</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="program-card">
+            <div class="program-card-image" style="background-image: url('https://www.uph.edu/wp-content/uploads/2024/07/Business-Law-e1750234879827.jpg?x52864')">
+                <div class="program-card-overlay">
+                    <h3>Hukum Bisnis</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="program-card">
+            <div class="program-card-image" style="background-image: url('https://www.uph.edu/wp-content/uploads/2024/08/Marketing-Retail-Innovation-e1750235149578.jpg?x52864')">
+                <div class="program-card-overlay">
+                    <h3>Marketing, Retail & Innovation</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="explore">
+    <h2>Jelajahi Lebih Banyak Program</h2>
+    <p class="explore-subtitle">Raih masa depan dengan beragam pilihan program kami</p>
+    
+    <div class="explore-filters">
+        <div class="search-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-box" placeholder="Cari...">
+        </div>
+        
+        <select class="filter-dropdown">
+            <option>Semua Tingkat</option>
+            <option>Diploma</option>
+            <option>Dual Degree</option>
+            <option>Magister</option>
+            <option>Pascasarjana</option>
+            <option>Sarjana</option>
+            <option>Sarjana Terapan</option>
+        </select>
+        
+        <select class="filter-dropdown">
+            <option>Jenis Program</option>
+            <option>Internasional</option>
+            <option>Reguler</option>
+        </select>
+        
+        <select class="filter-dropdown">
+            <option>Fakultas</option>
+            <option>Hukum</option>
+            <option>Teknologi informasi</option>
+            <option>Hospitality & Pariwisata</option>
+            <option>Pusat Pendidikan Eksekutif</option>
+            <option>Ilmu Pendidikan</option>
+            <option>Keperawatan</option>
+            <option>Ilmu Kesehatan</option>
+            <option>Kedokteran</option>
+            <option>Ekonomi dan Bisnis</option>
+            <option>Psikologi</option>
+            <option>Sains dan Teknologi</option>
+            <option>Musik</option>
+        </select>
+        
+        <button class="explore-btn">Jelajahi</button>
+    </div>
+</section>
+
+<section class="news">
+    <div class="news-header">
+        <div class="news-header-content">
+            <h2>Kabar Terbaru</h2>
+            <p>Temukan kabar terbaru dan perkembangan menarik di fakultas kami.</p>
+        </div>
+        <a href="#" class="nav-arrow">→</a>
+    </div>
+
+    <div class="news-container">
+        <div class="featured-news">
+            <div class="featured-news-image">
+                <img src="https://www.uph.edu/wp-content/uploads/2026/01/NEW-FEATURED-IMAGES-Website-Alumni-Stories-Rian-Djita.jpg?x52864" alt="Featured News">
+            </div>
+            <div class="featured-news-content">
+                <div class="news-item-meta">
+                    <span>28/01/2026</span>
+                    <span>Alumni</span>
+                </div>
+                <h2 class="featured-news-title">Ketekunan yang Membawa Jauh: Rian Djita, Alumni Teachers Collage UPH, dan Panggilan di Riset Pendidikan Global</h2>
+            </div>
+        </div>
+
+        <div class="news-list">
+            <div class="news-item">
+                <div class="news-item-image">
+                    <img src="https://www.uph.edu/wp-content/uploads/2026/01/NEW-FEATURED-IMAGES-Website-Riset-Kolaboratif-FEB-UPH-dan-AVISI.jpg?x52864" alt="News 1">
+                </div>
+                <div class="news-item-content">
+                    <div class="news-item-meta">
+                        <span>28/01/2026</span>
+                        <span>Bisnis & Manajemen</span>
+                    </div>
+                    <h3 class="news-item-title">Riset Kolaboratif FEB UPH dan AVISI: Upaya Nyata Lintas Sektor demi Industri Kreatif yang Bebas Pembajakan Digital</h3>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-item-image">
+                    <img src="https://www.uph.edu/wp-content/uploads/2022/04/Desain-Komunikasi-Visual-adv-news-featured-min.jpg?x52864" alt="News 2">
+                </div>
+                <div class="news-item-content">
+                    <div class="news-item-meta">
+                        <span>26/01/2026</span>
+                        <span>Article, Seni, Budaya, Musik & Desain</span>
+                    </div>
+                    <h3 class="news-item-title">Desain Komunikasi Visual: Panduan Lengkap Jurusan</h3>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-item-image">
+                    <img src="https://www.uph.edu/wp-content/uploads/2026/01/NEW-FEATURED-IMAGES-Website-Field-Trip-TC-Dubes-AS.jpg?x52864" alt="News 3">
+                </div>
+                <div class="news-item-content">
+                    <div class="news-item-meta">
+                        <span>20/01/2026</span>
+                        <span>Pendidikan</span>
+                    </div>
+                    <h3 class="news-item-title">Mahasiswa Teachers Collage UPH Asah Kemampuan Diplomasi Global Lewat Ask the Diplomat bersama Perwakilan Kedubes AS</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="alumni">
+    <div class="alumni-left">
+        <h2>Apa Kata Lulusan</h2>
+        <p>Baca testimoni dan dapatkan inspirasi dari alumni kami yang berprestasi yang berbagi pemikiran mereka tentang fakultas kami.</p>
+        <a href="#" class="alumni-btn">Baca Selengkapnya</a>
+    </div>
+
+    <div class="alumni-right">
+        <div class="alumni-image">
+            <img src="https://www.uph.edu/wp-content/uploads/2025/02/Wahyu-Wiwoho-e1750233689215.jpeg?x52864" alt="Alumni">
+        </div>
+        <div class="alumni-info">
+            <p class="alumni-quote">"Bagi saya, UPH lebih dari sekadar tempat untuk belajar. UPH adalah tempat untuk memperluas jaringan dan mempersiapkan diri untuk menghadapi berbagai tantangan di masa depan"</p>
+            <div class="alumni-info-name">Wahyu Wiwoho</div>
+            <div class="alumni-info-details">
+                Ilmu Komunikasi, 2000<br>
+                Producer & News Anchor at Metro TV
+            </div>
+        </div>
+    </div>
+
+    <div class="alumni-slider-dots">
+        <div class="alumni-dot active"></div>
+        <div class="alumni-dot"></div>
+        <div class="alumni-dot"></div>
+    </div>
+</section>
+
+<section class="instagram">
+    <div class="instagram-left">
+        <h2>Ikuti kami di Instagram</h2>
+        <a href="#" class="instagram-link">Lihat kami di media sosial →</a>
+    </div>
+
+    <div class="instagram-right">
+        <div class="instagram-carousel">
+            <div class="instagram-post">
+                <img src="https://scontent.cdninstagram.com/v/t51.82787-15/621441714_18553397938042542_111807675260156385_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=gUd18_zd0_YQ7kNvwEI1TTf&_nc_oc=AdkUg2x9-7Rd2XSLQarkfkpD3FAwLGK9XQlTQBFyiTefL5cpCgkJufYy2hmfgslBBWc&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=Sh82euV7MidUIczow53P8Q&oh=00_AfqCQxFJq9-gXbwwa-crpQQ9aIFsrlDIQ9fpBw4MetE_jw&oe=697FC3B5" alt="Instagram Post 1">
+            </div>
+            <div class="instagram-post">
+                <img src="https://scontent.cdninstagram.com/v/t51.82787-15/620473790_18552546283042542_5265234985778787295_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=640k1vqrSgIQ7kNvwGMykFs&_nc_oc=Adlzyrufp7Gvjo-t-f64MiW4LHXaK5fOiCBIsemuGSdrEnYwZFvh0-KpH4rutNEeKtg&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=Sh82euV7MidUIczow53P8Q&oh=00_AfqCvYwrXsSx7y2f1MU1vBvKiUPZr9Zo_BDeZJ1DJCYPHQ&oe=697FB163" alt="Instagram Post 2">
+            </div>
+            <div class="instagram-post">
+                <img src="https://scontent.cdninstagram.com/v/t51.71878-15/619286311_26145847685012806_3757228255508549380_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=9RjXO5hxf60Q7kNvwEPV3vc&_nc_oc=AdlgYk38hSB1ZcGnjMMcVGdx5B74thVirr_ce2WGrIsGB8YtyXC8vPwBvtRQvn7gv4U&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=Sh82euV7MidUIczow53P8Q&oh=00_Afp44LRjVYAhuLR_NI7IXnc5_1eEmalSgMnPeEuhw8iTUQ&oe=697FC802" alt="Instagram Post 3">
+            </div>
+            <div class="instagram-post">
+                <img src="https://scontent.cdninstagram.com/v/t51.82787-15/619203352_18551864398042542_319056930007285693_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=w0mXBq-W4okQ7kNvwGjKBpR&_nc_oc=Adm-3yxxvoGDZHhz-oFzV3aLO9jYYON460_pGxm4YkJKeQWQUtlNIvp4inv3ynKVLRw&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=Sh82euV7MidUIczow53P8Q&oh=00_AfqWSIedOH1v_T5z7bKXixKu3eey-AtmVBKJdiFvEMwfiQ&oe=697F9B67" alt="Instagram Post 4">
+            </div>
+            <div class="instagram-post">
+                <img src="https://scontent.cdninstagram.com/v/t51.82787-15/615577224_18551068201042542_402054885034682882_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=T8BPCg68xyIQ7kNvwHhJQJ5&_nc_oc=AdmkdtpwiYHFjD_6f9CzbaGUwd3PHMTlbaJ-Swt6nfEWwVQhptrckQ4djkKW2lx2r5Q&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=Sh82euV7MidUIczow53P8Q&oh=00_AfqKPkpGhJjhCsfyQ2uNZmldjolHkc_FoQksLoH3iVVquw&oe=697FA444" alt="Instagram Post 5">
+            </div>
+            <div class="instagram-post">
+                <img src="https://scontent.cdninstagram.com/v/t51.82787-15/615743043_18550709185042542_602773479230681446_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=Y78QtU0Dhx0Q7kNvwHCKY1R&_nc_oc=Adn7m12_EOWST0TtH7AxivVLLyY-7GhCI6R-DQ63AdEVKDrNzLeOsO9jOBE1rvj_t6s&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=Sh82euV7MidUIczow53P8Q&oh=00_AfrO8eEB3Qxkah4jFsJV4syHkbaQYN_drTe22zvJ8y0U6g&oe=697FC0DD" alt="Instagram Post 6">
+            </div>
+        </div>
+
+        <div class="instagram-carousel-dots">
+            <div class="instagram-carousel-dot active"></div>
+            <div class="instagram-carousel-dot"></div>
+            <div class="instagram-carousel-dot"></div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <!-- Kolom 1: Info Kontak -->
+        <div class="footer-section">
+            <div class="footer-logo">
+                <img src="https://www.uph.edu/wp-content/uploads/2025/10/UPH-Web-Logo-White-2025.png?x52864" alt="UPH Logo">
+            </div>
+            <div class="footer-section-contact">
+                <div>
+                    <strong>Jl. M. H. Thamrin Boulevard 1100</strong><br>
+                    <a href="https://maps.google.com" target="_blank">Lippo Village Tangerang 15811<br>Indonesia ↗</a>
+                </div>
+                <div>
+                    <a href="tel:+621254609001">(021) 546 0901</a>
+                </div>
+                <div>
+                    <a href="mailto:undergraduate.admission@uph.edu">undergraduate.admission@uph.edu</a><br>
+                    <a href="mailto:graduate.admission@uph.edu">graduate.admission@uph.edu</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kolom 2: Kampus Kami -->
+        <div class="footer-section">
+            <h3>Kampus Kami</h3>
+            <ul>
+                <li><a href="#">UPH Medan</a></li>
+                <li><a href="#">UPH Surabaya</a></li>
+                <li><a href="#">UPH College</a></li>
+                <li><a href="#">UPH Learning Center</a></li>
+                <li><a href="#">Lembaga Sertifikasi Profesi</a></li>
+            </ul>
+        </div>
+
+        <!-- Kolom 3: Tautan Cepat -->
+        <div class="footer-section">
+            <h3>Tautan Cepat</h3>
+            <ul>
+                <li><a href="#">Lulusan</a></li>
+                <li><a href="#">UPH Festival</a></li>
+                <li><a href="#">Pekerjaan</a></li>
+                <li><a href="#">Daftar Kontak</a></li>
+                <li><a href="#">Kontak Kami</a></li>
+                <li><a href="#">Registrar</a></li>
+                <li><a href="#">Kalender Akademik</a></li>
+                <li><a href="#">Kalender Akademik (Kedokteran)</a></li>
+                <li><a href="#">Kalender Akademik (S2)</a></li>
+                <li><a href="#">Kalender Akademik (S3)</a></li>
+                <li><a href="#">Kuis</a></li>
+                <li><a href="#">SDGs UPH</a></li>
+                <li><a href="#">Green Campus UPH</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-copyright">
+            © Copyright 2025 Yayasan Universitas Pelita Harapan. All Rights Reserved.
+        </div>
+        <div class="footer-links">
+            <a href="#">Kebijakan Privasi</a>
+        </div>
+        <div class="footer-socials">
+            <a href="https://facebook.com/uph" target="_blank" title="Facebook">f</a>
+            <a href="https://twitter.com/uph" target="_blank" title="Twitter">𝕏</a>
+            <a href="https://instagram.com/uphofficial" target="_blank" title="Instagram">📷</a>
+            <a href="https://linkedin.com/company/uph" target="_blank" title="LinkedIn">in</a>
+            <a href="https://youtube.com/uph" target="_blank" title="YouTube">▶</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
